@@ -4,7 +4,7 @@ import Search from "./Search";
 import { useState } from "react";
 import Results from "./Results";
 
-function updateSearchResults(query, results, setSearchQuery, setSearchResults) {
+const updateSearchResults = (query, results, setSearchQuery, setSearchResults) => {
   if (query?.length < 3) {
     setSearchResults([]);
     return;
@@ -29,7 +29,7 @@ function updateSearchResults(query, results, setSearchQuery, setSearchResults) {
   }
 }
 
-function App() {
+const App = () => {
   const { search } = window.location;
   const query = new URLSearchParams(search).get("label_id");
   const [searchQuery, setSearchQuery] = useState(query || "");

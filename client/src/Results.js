@@ -8,14 +8,25 @@ const filterResults = (results, query) => {
   });
 };
 
-function Results({ searchQuery, searchResults }) {
+const Results = ({ searchQuery, searchResults }) => {
   const filteredResults = filterResults(searchResults, searchQuery);
   return (
-    <ul>
-      {filteredResults.map((result) => {
-        return <li key={result.id}>{result.label_id}</li>;
-      })}
-    </ul>
+    <table>
+      <thead>
+        <td>Label ID</td>
+        <td>Tracking #</td>
+      </thead>
+      <tbody>
+        {filteredResults.map((result) => {
+          return (
+            <tr key={result.id}>
+              <td>{result.label_id}</td>
+              <td>{result.shipping_tracking_code}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 }
 
